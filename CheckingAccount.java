@@ -28,16 +28,39 @@ public class CheckingAccount extends Account {
     }
 
     public void deposit(int amountIn) {
-        accountBalance += amountIn;
-        System.out.println(amountIn + " deposited");
+        if (locked() == true) {
+            System.out.println("ACCESS DENIED");
+        }
+        else {
+            accountBalance += amountIn;
+            System.out.println("$" + amountIn + " deposited");    
+        }
     }
 
     public void withdraw(int amountOut) {
-        accountBalance -= amountOut;
-        System.out.println(amountOut + " withdrawn");
+        if (locked() == true) {
+            System.out.println("ACCESS DENIED");
+        }
+        else if (accountBalance == 0) {
+            System.out.println("NO MONEY, CAN NOT WITHDRAW");
+        }
+        else if (accountBalance - amountOut < 0) {
+            System.out.println("OVERDRAW");
+        }
+        else {
+            accountBalance -= amountOut;
+            System.out.println("$" + amountOut + " withdrawn");    
+        }
+        
     }
 
     public void printBalance() {
-        System.out.println(accountBalance);
+        if (locked() == true) {
+            System.out.println("ACCESS DENIED");
+        }
+        else{
+            System.out.println("$" + accountBalance);
+        }
+        
     }
 }

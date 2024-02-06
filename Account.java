@@ -19,7 +19,7 @@ public class Account implements Lockable {
     }
 
     public void lock() {
-        System.out.print("CODE: ");
+        System.out.print("CODE TO LOCK: ");
         enterKeyCode = scan.nextInt();
         if (enterKeyCode == keyCode) {
             isLocked = true;
@@ -30,7 +30,7 @@ public class Account implements Lockable {
     }
 
     public void unlock() {
-        System.out.print("CODE: ");
+        System.out.print("CODE TO UNLOCK: ");
         enterKeyCode = scan.nextInt();
         if (enterKeyCode == keyCode) {
             isLocked = false;
